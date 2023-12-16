@@ -1,0 +1,102 @@
+<div class="order-form" id="form-container">
+  <div class="row my-5">
+    <div class="col">
+      <h2 class="text-center">Сделать заказ</h2>
+    </div>
+  </div>
+  <form [formGroup]="orderForm" (ngSubmit)="createOrder()">
+    <div class="form">
+      <div class="row g-3">
+        <div class="col-sm-4">
+          <label for="name" class="form-label">Имя</label>
+          <input type="text" class="form-control" id="name" formControlName="name" placeholder="" value=""
+                 required>
+          <div class="invalid-feedback"
+               *ngIf="orderForm.get('name')?.invalid && (orderForm.get('name')?.touched) || orderForm.get('name')?.dirty
+                   && orderForm.get('name')?.errors?.['required']">
+            Укажите имя, используя только буквы.
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <label for="last_name" class="form-label">Фамилия</label>
+          <input type="text" class="form-control" id="last_name" formControlName="last_name" placeholder="" value=""
+                 required>
+          <div class="invalid-feedback"
+               *ngIf="orderForm.get('last_name')?.invalid && (orderForm.get('last_name')?.touched) || orderForm.get('last_name')?.dirty
+                   && orderForm.get('last_name')?.errors?.['required']">
+            Укажите фамилию, используя только буквы.
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <label class="form-label">Телефон</label>
+          <input type="text" formControlName="phone" class="form-control" id="phone-input" placeholder="" required>
+          <div class="w-100">
+            <!--               *ngIf="orderForm.get('phone')?.invalid && (orderForm.get('phone')?.touched) || orderForm.get('phone')?.dirty-->
+            <!--               && orderForm.get('phone')?.errors?.['required']">-->
+            <!--            <div class="invalid-feedback"-->
+            <!--              Введите корректный номер телефона.-->
+            <!--            </div>-->
+            <div class="invalid-feedback" *ngIf="orderForm.get('phone')?.invalid && (orderForm.get('phone')?.touched) || orderForm.get('phone')?.dirty
+               && orderForm.get('phone')?.errors?.['required'] && orderForm.get('phone')?.errors?.['pattern']">
+              Введите корректный номер телефона.
+            </div>
+            <div class="invalid-feedback" *ngIf="orderForm.get('phone')?.errors?.['maxlength']">
+              Телефонный номер должен содержать не более 11 цифр.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Страна</label>
+          <input type="text" formControlName="country" class="form-control" required>
+          <div class="invalid-feedback"
+               *ngIf="orderForm.get('country')?.invalid && (orderForm.get('country')?.touched) || orderForm.get('country')?.dirty
+                   && orderForm.get('country')?.errors?.['required']">
+            Укажите страну.
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Индекс</label>
+          <input type="text" formControlName="zip" class="form-control" id="index" required>
+          <div class="invalid-feedback"
+               *ngIf="orderForm.get('zip')?.invalid && (orderForm.get('zip')?.touched) || orderForm.get('zip')?.dirty
+                   && orderForm.get('zip')?.errors?.['required']">
+            Укажите индекс.
+          </div>
+        </div>
+        <div class="col-md-12">
+          <label class="form-label">Адрес</label>
+          <input type="text" formControlName="address" class="form-control" required>
+          <div class="invalid-feedback"
+               *ngIf="orderForm.get('address')?.invalid && (orderForm.get('address')?.touched) || orderForm.get('address')?.dirty
+                  && orderForm.get('address')?.errors?.['required'] && orderForm.get('address')?.errors?.['pattern']">
+            Введите корректный адрес (буквы, цифры, пробелы, дефисы и слеши).
+          </div>
+        </div>
+        <div class="col-md-12">
+          <label class="form-label">Товар</label>
+          <input type="text" formControlName="product" class="form-control" readonly required>
+        </div>
+        <div class="col-md-12">
+          <label class="form-label">Комментарий к заказу</label>
+          <input type="text" formControlName="comment" class="form-control">
+        </div>
+        <div class="btn-group col-3">
+          <button class="btn btn-primary  hvr-grow-shadow" type="submit"
+                  [disabled]="orderForm.invalid">Отправить
+          </button>
+        </div>
+        <div class="row my-5" id="error-message">
+          <h2 class="text-center">Произошла ошибка. Попробуйте еще раз.</h2>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<div class="row my-5" id="thanks-message">
+  <div class="col">
+    <h2 class="text-center">Спасибо за заказ!</h2>
+  </div>
+</div>
+

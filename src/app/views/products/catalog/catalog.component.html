@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row my-5">
+    <div class="col">
+      <h1 class="text-center">Наши чайные коллекции</h1>
+    </div>
+  </div>
+  <div class="row align-items-stretch gy-3">
+    <div class="col col-xxl-4 col-lg-6 d-flex" *ngFor="let product of products">
+      <tea-card [product]="product"></tea-card>
+    </div>
+  </div>
+</div>
+

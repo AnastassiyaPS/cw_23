@@ -1,0 +1,15 @@
+<div class="align-items product">
+  <div class="col col-xxl-4 col-lg-6">
+    <div class="card" style="width: 416px;">
+      <a class="product-image">
+        <img src="{{product.image}}" class="card-img-top" alt="Картинка чая">
+      </a>
+      <div class="card-body">
+        <h5 class="card-title fs-5">{{product.title}}</h5>
+        <p class="card-text" >Цена: {{product.price}}</p>
+        <p class="card-text" >{{product.description}}</p>
+        <a class="btn btn-bordo" routerLink="/order" [queryParams]="{product:product.title}">В корзину</a>
+      </div>
+    </div>
+  </div>
+</div>

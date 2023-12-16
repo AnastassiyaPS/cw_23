@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  margin: 0 auto;
+}
+
+@font-face {
+  font-family: Arial;
+  src: url("fonts/arialmt.ttf");
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #000000;
+}
+
+header {
+  margin-bottom: 72px;
+}
+
+.invalid-feedback {
+  display: block !important;
+}
